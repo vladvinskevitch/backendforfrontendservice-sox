@@ -1,4 +1,5 @@
 package com.bffssox.usecases;
 
-public class StudentRepository {
+public interface StudentRepository {
+    String execute (Long id);
 }
