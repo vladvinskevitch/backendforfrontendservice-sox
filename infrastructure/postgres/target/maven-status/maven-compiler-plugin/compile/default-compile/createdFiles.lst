@@ -1,0 +1,4 @@
+com/bffssox/entity/StudentEntity$StudentEntityBuilder.class
+com/bffssox/entity/StudentEntity.class
+com/bffssox/jpa/StudentJPA.class
+com/bffssox/repository/StudentRepositoryImpl.class

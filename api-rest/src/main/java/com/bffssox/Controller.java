@@ -9,9 +9,13 @@ public class Controller {
 
     private StudentController studentController;
 
+    public Controller(StudentController studentController) {
+        this.studentController = studentController;
+    }
+
     @GetMapping("/student")
     public void getStudent() {
         final Long id = 2L;
-        studentController.execute(id);
+        System.out.println(studentController.execute(id));
     }
 }
