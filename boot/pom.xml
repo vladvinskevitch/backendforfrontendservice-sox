@@ -11,12 +11,6 @@
 
     <artifactId>boot</artifactId>
 
-    <properties>
-        <maven.compiler.source>22</maven.compiler.source>
-        <maven.compiler.target>22</maven.compiler.target>
-        <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
-    </properties>
-
     <dependencies>
         <!-- MODULE -->
         <dependency>
@@ -40,7 +34,6 @@
             <version>${project.version}</version>
         </dependency>
         <!-- DEPENDENCY -->
-        <!-- https://mvnrepository.com/artifact/org.springframework.boot/spring-boot-starter -->
         <dependency>
             <groupId>org.springframework.boot</groupId>
             <artifactId>spring-boot-starter</artifactId>
