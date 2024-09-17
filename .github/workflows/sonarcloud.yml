@@ -22,9 +22,12 @@ jobs:
 
       - name: Install Maven 3.6.3
         run: |
+          # Download Maven 3.6.3
           curl -fsSL https://archive.apache.org/dist/maven/maven-3/3.6.3/binaries/apache-maven-3.6.3-bin.tar.gz -o /tmp/apache-maven-3.6.3-bin.tar.gz
+          # Extract the tar.gz file
           tar xz -C /opt -f /tmp/apache-maven-3.6.3-bin.tar.gz
-          sudo ln -s /opt/apache-maven-3.6.3/bin/mvn /usr/bin/mvn
+          # Create a symbolic link to /usr/bin
+          sudo ln -sf /opt/apache-maven-3.6.3/bin/mvn /usr/bin/mvn
 
       - name: Cache Maven packages
         uses: actions/cache@v3
