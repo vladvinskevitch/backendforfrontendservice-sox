@@ -20,6 +20,11 @@ jobs:
           java-version: '17'
           distribution: 'adopt'
 
+      - name: Set up Maven 3.9.9
+        uses: actions/setup-maven@v3
+        with:
+          maven-version: '3.9.9'
+
       - name: Cache Maven packages
         uses: actions/cache@v3
         with:
@@ -32,7 +37,7 @@ jobs:
         run: mvn --version
 
       - name: Build and analyze with SonarCloud
-        run: mvn clean verify org.sonarsource.scanner.maven:sonar-maven-plugin:4.0.0.4121:sonar \
+        run: mvn clean verify org.sonarsource.scanner.maven:sonar-maven-plugin:4.0.0.4121:sonar -X \
           -Dsonar.projectKey=vlad-vinskevitch_backendforfrontedservice-sox \
           -Dsonar.organization=sitionix \
           -Dsonar.host.url=https://sonarcloud.io \
