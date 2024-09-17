@@ -23,7 +23,10 @@ jobs:
       - name: Set up Maven 3.9.9
         run: |
           curl -sL https://www.apache.org/dist/maven/maven-3/3.9.9/binaries/apache-maven-3.9.9-bin.tar.gz | tar xz -C /opt
-          ln -s /opt/apache-maven-3.9.9/bin/mvn /usr/bin/mvn
+          if [ -L /usr/bin/mvn ]; then
+            sudo rm /usr/bin/mvn
+          fi
+          sudo ln -s /opt/apache-maven-3.9.9/bin/mvn /usr/bin/mvn
 
       - name: Cache Maven packages
         uses: actions/cache@v3
