@@ -20,10 +20,14 @@ jobs:
           java-version: '17'
           distribution: 'adopt'
 
-      - name: Set up Maven
+      - name: Install Maven
         run: |
-          curl -sL https://www.apache.org/dist/maven/maven-3/3.8.8/binaries/apache-maven-3.8.8-bin.tar.gz | tar xz -C /opt
-          ln -s /opt/apache-maven-3.8.8/bin/mvn /usr/bin/mvn
+          # Remove any existing maven installation if necessary
+          sudo rm -f /usr/bin/mvn
+          # Download and install Maven
+          curl -sL https://www.apache.org/dist/maven/maven-3/3.8.8/binaries/apache-maven-3.8.8-bin.tar.gz | sudo tar xz -C /opt
+          # Create a symbolic link
+          sudo ln -s /opt/apache-maven-3.8.8/bin/mvn /usr/bin/mvn
 
       - name: Configure Maven settings
         run: |
