@@ -15,6 +15,11 @@
     <properties>
         <sonar.organization>sitionix</sonar.organization>
         <sonar.host.url>https://sonarcloud.io</sonar.host.url>
+        <sonar.projectKey>vlad-vinskevitch_backendforfrontedservice-sox</sonar.projectKey>
+        <sonar.pullrequest.key>${env.GITHUB_PR_NUMBER}</sonar.pullrequest.key>
+        <sonar.pullrequest.branch>${env.GITHUB_HEAD_REF}</sonar.pullrequest.branch>
+        <sonar.pullrequest.base>${env.GITHUB_BASE_REF}</sonar.pullrequest.base>
+        <sonar.coverage.jacoco.xmlReportPaths>target/site/jacoco/jacoco.xml</sonar.coverage.jacoco.xmlReportPaths>
     </properties>
 
     <dependencies>
@@ -80,16 +85,14 @@
                     </execution>
                 </executions>
             </plugin>
+
+            <!-- Sonar Maven Plugin -->
+            <plugin>
+                <groupId>org.sonarsource.scanner.maven</groupId>
+                <artifactId>sonar-maven-plugin</artifactId>
+                <version>4.0.0.4121</version> <!-- Use the version from your GitHub Actions -->
+            </plugin>
         </plugins>
-        <pluginManagement>
-            <plugins>
-                <plugin>
-                    <groupId>org.sonarsource.scanner.maven</groupId>
-                    <artifactId>sonar-maven-plugin</artifactId>
-                    <version>3.7.0.1746</version>
-                </plugin>
-            </plugins>
-        </pluginManagement>
     </build>
 
 </project>
