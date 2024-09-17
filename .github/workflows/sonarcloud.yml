@@ -32,7 +32,7 @@ jobs:
         run: rm -rf ~/.m2/repository/org/sonarsource/scanner/maven
 
       - name: Build and analyze with SonarCloud
-        run: mvn clean verify sonar:sonar \
+        run: mvn clean verify sonar:sonar -X \
           -Dsonar.projectKey=sitionix \
           -Dsonar.organization=Sitionix \
           -Dsonar.host.url=https://sonarcloud.io \
@@ -41,3 +41,4 @@ jobs:
           -Dsonar.pullrequest.branch=${{ github.head_ref }} \
           -Dsonar.pullrequest.base=${{ github.base_ref }} \
           -Dsonar.coverage.jacoco.xmlReportPaths=target/site/jacoco/jacoco.xml
+
