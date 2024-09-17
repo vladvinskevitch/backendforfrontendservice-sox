@@ -21,7 +21,7 @@ jobs:
         uses: actions/setup-java@v4
         with:
           java-version: 17
-          distribution: 'zulu'  # Alternative distribution options are available.
+          distribution: 'zulu'  # Alternative distribution options are available
 
       - name: Cache SonarCloud packages
         uses: actions/cache@v4
@@ -41,8 +41,4 @@ jobs:
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}  # Needed to get PR information, if any
           SONAR_TOKEN: ${{ secrets.SONAR_TOKEN }}
-        run: mvn -B verify org.sonarsource.scanner.maven:sonar-maven-plugin:4.0.0.4121:sonar \
-          -Dsonar.projectKey=vlad-vinskevitch_backendforfrontedservice-sox \
-          -Dsonar.organization=sitionix \
-          -Dsonar.host.url=https://sonarcloud.io \
-          -Dsonar.login=${{ secrets.SONAR_TOKEN }}
+        run: mvn -B verify org.sonarsource.scanner.maven:sonar-maven-plugin:sonar -Dsonar.projectKey=vlad-vinskevitch_backendforfrontedservice-sox -Dsonar.organization=sitionix -Dsonar.host.url=https://sonarcloud.io
