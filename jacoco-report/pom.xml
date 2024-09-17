@@ -3,6 +3,7 @@
          xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
          xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
     <modelVersion>4.0.0</modelVersion>
+
     <parent>
         <groupId>com.bffssox</groupId>
         <artifactId>bffssox</artifactId>
@@ -12,6 +13,7 @@
     <artifactId>jacoco-report</artifactId>
 
     <dependencies>
+        <!-- Include all modules for which you want to aggregate coverage -->
         <dependency>
             <groupId>${project.groupId}</groupId>
             <artifactId>api-rest</artifactId>
@@ -41,30 +43,45 @@
 
     <build>
         <plugins>
+            <!-- Jacoco Maven Plugin for aggregation -->
             <plugin>
                 <groupId>org.jacoco</groupId>
                 <artifactId>jacoco-maven-plugin</artifactId>
                 <version>0.8.10</version>
                 <executions>
-                    <!-- Bind JaCoCo to the 'prepare-agent' phase -->
+                    <!-- Attach JaCoCo agent during the test phase in all modules -->
                     <execution>
                         <id>prepare-agent</id>
                         <goals>
                             <goal>prepare-agent</goal>
                         </goals>
                     </execution>
+                    <!-- Generate the coverage report after tests are run for all modules -->
                     <execution>
-                        <id>report</id>
-                        <phase>test</phase>
+                        <id>report-aggregate</id>
                         <goals>
-                            <goal>report</goal>
+                            <goal>report-aggregate</goal>
                         </goals>
+                        <phase>verify</phase>
+                        <configuration>
+                            <!-- XML report generation -->
+                            <dataFile>${project.build.directory}/jacoco.exec</dataFile>
+                            <outputDirectory>${project.build.directory}/site/jacoco</outputDirectory>
+                            <reports>
+                                <xml>report.xml</xml>
+                                <html>report</html>
+                            </reports>
+                        </configuration>
                     </execution>
                 </executions>
             </plugin>
 
+            <!-- Sonar Maven Plugin for further analysis (optional step) -->
+            <plugin>
+                <groupId>org.sonarsource.scanner.maven</groupId>
+                <artifactId>sonar-maven-plugin</artifactId>
+                <version>3.9.1.2184</version>
+            </plugin>
         </plugins>
     </build>
-
-
 </project>
