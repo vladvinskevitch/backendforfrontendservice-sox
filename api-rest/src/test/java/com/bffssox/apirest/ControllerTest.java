@@ -35,7 +35,6 @@ class ControllerTest {
         int b = 2;
 
         Integer actual = controller.summ(a, b);
-
         assertThat(actual).isEqualTo(3);
     }
 }
