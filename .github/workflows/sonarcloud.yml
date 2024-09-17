@@ -41,4 +41,9 @@ jobs:
         run: mvn --version
 
       - name: Build and analyze with SonarCloud
-        run: mvn clean verify sonar:sonar -X
+        run: mvn clean verify sonar:sonar -Dsonar.projectKey=vlad-vinskevitch_backendforfrontedservice-sox \
+          -Dsonar.organization=sitionix \
+          -Dsonar.pullrequest.key=${{ github.event.pull_request.number }} \
+          -Dsonar.pullrequest.branch=${{ github.head_ref }} \
+          -Dsonar.pullrequest.base=${{ github.base_ref }} \
+          -Dsonar.coverage.jacoco.xmlReportPaths=target/site/jacoco/jacoco.xml -X
