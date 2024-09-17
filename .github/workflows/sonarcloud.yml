@@ -22,7 +22,7 @@ jobs:
 
       - name: Set up Maven 3.6.3
         run: |
-          curl -sL https://www.apache.org/dist/maven/maven-3/3.6.3/binaries/apache-maven-3.6.93-bin.tar.gz | tar xz -C /opt
+          curl -sL https://www.apache.org/dist/maven/maven-3/3.6.3/binaries/apache-maven-3.6.3-bin.tar.gz | tar xz -C /opt
           if [ -L /usr/bin/mvn ]; then
             sudo rm /usr/bin/mvn
           fi
