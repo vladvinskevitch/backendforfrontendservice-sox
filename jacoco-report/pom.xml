@@ -16,6 +16,7 @@
         <sonar.projectKey>vlad-vinskevitch_backendforfrontedservice-sox</sonar.projectKey>
         <sonar.organization>sitionix</sonar.organization>
         <sonar.host.url>https://sonarcloud.io</sonar.host.url>
+        <sonar.coverage.jacoco.xmlReportPaths>${project.build.directory}/site/jacoco/jacoco.xml</sonar.coverage.jacoco.xmlReportPaths>
         <!-- Add any other SonarCloud properties here -->
     </properties>
 
