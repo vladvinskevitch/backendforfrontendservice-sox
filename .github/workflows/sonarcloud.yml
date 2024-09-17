@@ -20,13 +20,10 @@ jobs:
           java-version: '17'
           distribution: 'adopt'
 
-      - name: Set up Maven 3.9.9
-        run: |
-          curl -sL https://www.apache.org/dist/maven/maven-3/3.9.9/binaries/apache-maven-3.9.9-bin.tar.gz | tar xz -C /opt
-          if [ -L /usr/bin/mvn ]; then
-            sudo rm /usr/bin/mvn
-          fi
-          sudo ln -s /opt/apache-maven-3.9.9/bin/mvn /usr/bin/mvn
+      - name: Set up Maven 3.6.3
+        uses: actions/setup-maven@v3
+        with:
+          maven-version: '3.6.3'
 
       - name: Cache Maven packages
         uses: actions/cache@v3
