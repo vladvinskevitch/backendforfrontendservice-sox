@@ -39,13 +39,10 @@ jobs:
       - name: Verify Maven Version
         run: mvn --version
 
-      - name: Build and analyze with SonarCloud
-        run: mvn clean verify org.sonarsource.scanner.maven:sonar-maven-plugin:4.0.0.4121:sonar -X \
-          -Dsonar.projectKey=vlad-vinskevitch_backendforfrontedservice-sox \
-          -Dsonar.organization=sitionix \
-          -Dsonar.host.url=https://sonarcloud.io \
-          -Dsonar.login=${{ secrets.SONAR_TOKEN }} \
-          -Dsonar.pullrequest.key=${{ github.event.pull_request.number }} \
-          -Dsonar.pullrequest.branch=${{ github.head_ref }} \
-          -Dsonar.pullrequest.base=${{ github.base_ref }} \
-          -Dsonar.coverage.jacoco.xmlReportPaths=target/site/jacoco/jacoco.xml
+      - name: Build and analyze
+        env:
+          SONAR_TOKEN: ${{ secrets.SONAR_TOKEN }}
+        run: mvn verify sonar:sonar \
+            -Dsonar.host.url=https://sonarcloud.io \
+            -Dsonar.organization=sitionix \
+            -Dsonar.projectKey=vlad-vinskevitch_backendforfrontedservice-sox
