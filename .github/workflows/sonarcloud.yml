@@ -30,7 +30,7 @@ jobs:
 
       - name: Build and analyze with SonarCloud
         run: mvn clean verify sonar:sonar \
-          -Dsonar.projectKey=sitionix \
+          -Dsonar.projectKey=backendforfrontedservice-sox \
           -Dsonar.organization=Sitionix \
           -Dsonar.host.url=https://sonarcloud.io \
           -Dsonar.login=${{ secrets.SONAR_TOKEN }} \
@@ -38,3 +38,4 @@ jobs:
           -Dsonar.pullrequest.branch=${{ github.head_ref }} \
           -Dsonar.pullrequest.base=${{ github.base_ref }} \
           -Dsonar.coverage.jacoco.xmlReportPaths=target/site/jacoco/jacoco.xml
+
