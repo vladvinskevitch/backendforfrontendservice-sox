@@ -1,4 +1,4 @@
-name: SonarCloud PR Analysis
+name: Build and Analyze with SonarCloud
 
 on:
   pull_request:
@@ -7,8 +7,7 @@ on:
       - develop
 
 jobs:
-  sonarcloud:
-    name: SonarCloud Analysis
+  build:
     runs-on: ubuntu-latest
 
     steps:
@@ -21,25 +20,21 @@ jobs:
           java-version: '17'
           distribution: 'adopt'
 
-      - name: Build and test with Maven
-        run: mvn clean verify
-
-      - name: Upload test results
-        uses: actions/upload-artifact@v3
+      - name: Cache Maven packages
+        uses: actions/cache@v3
         with:
-          name: test-results
-          path: target/surefire-reports
+          path: ~/.m2/repository
+          key: ${{ runner.os }}-maven-${{ hashFiles('**/pom.xml') }}
+          restore-keys: |
+            ${{ runner.os }}-maven-
 
-      - name: SonarCloud Scan
-        uses: SonarSource/sonarcloud-github-action@v1
-        with:
-          args: >
-            -Dsonar.projectKey=sitionix
-            -Dsonar.organization=Sitionix
-            -Dsonar.pullrequest.key=${{ github.event.pull_request.number }}
-            -Dsonar.pullrequest.branch=${{ github.head_ref }}
-            -Dsonar.pullrequest.base=${{ github.base_ref }}
-            -Dsonar.java.binaries=target/classes
-            -Dsonar.coverage.jacoco.xmlReportPaths=target/site/jacoco/jacoco.xml
-        env:
-          SONAR_TOKEN: ${{ secrets.SONAR_TOKEN }}
+      - name: Build and analyze with SonarCloud
+        run: mvn clean verify org.sonarsource.scanner.maven:sonar \
+          -Dsonar.projectKey=sitionix \
+          -Dsonar.organization=Sitionix \
+          -Dsonar.host.url=https://sonarcloud.io \
+          -Dsonar.login=${{ secrets.SONAR_TOKEN }} \
+          -Dsonar.pullrequest.key=${{ github.event.pull_request.number }} \
+          -Dsonar.pullrequest.branch=${{ github.head_ref }} \
+          -Dsonar.pullrequest.base=${{ github.base_ref }} \
+          -Dsonar.coverage.jacoco.xmlReportPaths=target/site/jacoco/jacoco.xml
