@@ -1,4 +1,4 @@
-package com.bffssox;
+package com.sitionix.bffssox;
 
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;

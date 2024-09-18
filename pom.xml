@@ -8,12 +8,13 @@
         <version>3.3.3</version>
         <relativePath/> <!-- lookup parent from repository -->
     </parent>
-    <groupId>com.bffssox</groupId>
-    <artifactId>bffssox</artifactId>
+    <groupId>com.sitionix.bffssox</groupId>
+    <artifactId>backendforfrontendservice</artifactId>
     <version>0.0.1-SNAPSHOT</version>
+
     <packaging>pom</packaging>
-    <name>backendforfrontedservice-sox</name>
-    <description>Backend for fronted service</description>
+    <name>backendforfrontendservice-sox</name>
+    <description>Backend for frontend service</description>
     <url/>
     <licenses>
         <license/>
@@ -27,6 +28,7 @@
         <module>application</module>
         <module>infrastructure</module>
         <module>domain</module>
+        <module>jacoco-report</module>
     </modules>
     <scm>
         <connection/>
@@ -59,7 +61,7 @@
             </dependency>
             <dependency>
                 <groupId>${project.groupId}</groupId>
-                <artifactId>postgres</artifactId>
+                <artifactId>postgresql</artifactId>
             </dependency>
             <!-- DEPENDENCY -->
             <dependency>
@@ -87,10 +89,10 @@
                     <groupId>org.springframework.boot</groupId>
                     <artifactId>spring-boot-maven-plugin</artifactId>
                     <configuration>
-                        <mainClass>com.bffssox.Application</mainClass>
+                        <mainClass>com.sitionix.bffssox.Application</mainClass>
                         <excludes>
                             <exclude>
-                                <groupId>com.bffssox</groupId>
+                                <groupId>com.sitionix.bffssox</groupId>
                                 <artifactId>lombok</artifactId>
                             </exclude>
                         </excludes>
