@@ -8,7 +8,7 @@
         <version>3.3.3</version>
         <relativePath/> <!-- lookup parent from repository -->
     </parent>
-    <groupId>com.bffssox</groupId>
+    <groupId>com.sitionix</groupId>
     <artifactId>bffssox</artifactId>
     <version>0.0.1-SNAPSHOT</version>
     <packaging>pom</packaging>
@@ -88,10 +88,10 @@
                     <groupId>org.springframework.boot</groupId>
                     <artifactId>spring-boot-maven-plugin</artifactId>
                     <configuration>
-                        <mainClass>com.bffssox.Application</mainClass>
+                        <mainClass>com.sitionix.Application</mainClass>
                         <excludes>
                             <exclude>
-                                <groupId>com.bffssox</groupId>
+                                <groupId>com.sitionix</groupId>
                                 <artifactId>lombok</artifactId>
                             </exclude>
                         </excludes>
