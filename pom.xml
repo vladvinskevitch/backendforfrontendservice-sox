@@ -8,12 +8,14 @@
         <version>3.3.3</version>
         <relativePath/> <!-- lookup parent from repository -->
     </parent>
-    <groupId>com.sitionix</groupId>
-    <artifactId>bffssox</artifactId>
+    <groupId>com.sitionix.bffssox</groupId>
+    <artifactId>backendforfrontendservice</artifactId>
     <version>0.0.1-SNAPSHOT</version>
+
     <packaging>pom</packaging>
-    <name>backendforfrontedservice-sox</name>
-    <description>Backend for fronted service</description>
+    <name>backendforfrontendservice-sox</name>
+    <description>Backend for frontend service</description>
+
     <url/>
     <licenses>
         <license/>
@@ -88,10 +90,10 @@
                     <groupId>org.springframework.boot</groupId>
                     <artifactId>spring-boot-maven-plugin</artifactId>
                     <configuration>
-                        <mainClass>com.sitionix.Application</mainClass>
+                        <mainClass>com.sitionix.bffssox.Application</mainClass>
                         <excludes>
                             <exclude>
-                                <groupId>com.sitionix</groupId>
+                                <groupId>com.sitionix.bffssox</groupId>
                                 <artifactId>lombok</artifactId>
                             </exclude>
                         </excludes>
