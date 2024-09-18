@@ -13,16 +13,18 @@
     <artifactId>jacoco-report</artifactId>
 
     <properties>
+        <!-- SonarQube properties -->
         <sonar.projectKey>vlad-vinskevitch_backendforfrontedservice-sox</sonar.projectKey>
         <sonar.organization>sitionix</sonar.organization>
         <sonar.host.url>https://sonarcloud.io</sonar.host.url>
         <sonar.coverage.jacoco.xmlReportPaths>${project.build.directory}/site/jacoco/jacoco.xml</sonar.coverage.jacoco.xmlReportPaths>
-        <!-- Add any other SonarCloud properties here -->
+
+        <!-- JaCoCo plugin version -->
+        <jacoco.version>0.8.10</jacoco.version>
     </properties>
 
-
     <dependencies>
-        <!-- Include all modules for which you want to aggregate coverage -->
+        <!-- Dependencies for other modules to aggregate coverage -->
         <dependency>
             <groupId>${project.groupId}</groupId>
             <artifactId>api-rest</artifactId>
@@ -52,20 +54,21 @@
 
     <build>
         <plugins>
-            <!-- Jacoco Maven Plugin for aggregation -->
+            <!-- JaCoCo Maven Plugin for code coverage -->
             <plugin>
                 <groupId>org.jacoco</groupId>
                 <artifactId>jacoco-maven-plugin</artifactId>
-                <version>0.8.10</version>
+                <version>${jacoco.version}</version>
                 <executions>
-                    <!-- Attach JaCoCo agent during the test phase in all modules -->
+                    <!-- Prepare the JaCoCo agent for coverage data collection -->
                     <execution>
                         <id>prepare-agent</id>
                         <goals>
                             <goal>prepare-agent</goal>
                         </goals>
+                        <phase>test</phase>
                     </execution>
-                    <!-- Generate the coverage report after tests are run for all modules -->
+                    <!-- Aggregate the coverage reports -->
                     <execution>
                         <id>report-aggregate</id>
                         <goals>
@@ -73,27 +76,23 @@
                         </goals>
                         <phase>verify</phase>
                         <configuration>
-                            <!-- XML report generation -->
                             <dataFile>${project.build.directory}/jacoco.exec</dataFile>
                             <outputDirectory>${project.build.directory}/site/jacoco</outputDirectory>
                             <reports>
-                                <xml>report.xml</xml>
+                                <xml>jacoco.xml</xml>
                                 <html>report</html>
                             </reports>
                         </configuration>
                     </execution>
                 </executions>
             </plugin>
-        </plugins>
-        <pluginManagement>
-            <plugins>
-                <plugin>
-                    <groupId>org.sonarsource.scanner.maven</groupId>
-                    <artifactId>sonar-maven-plugin</artifactId>
-                    <version>3.7.0.1746</version>
-                </plugin>
-            </plugins>
-        </pluginManagement>
-    </build>
 
+            <!-- SonarQube Plugin for analysis -->
+            <plugin>
+                <groupId>org.sonarsource.scanner.maven</groupId>
+                <artifactId>sonar-maven-plugin</artifactId>
+                <version>3.7.0.1746</version>
+            </plugin>
+        </plugins>
+    </build>
 </project>
