@@ -29,6 +29,8 @@
         <module>infrastructure</module>
         <module>domain</module>
         <module>jacoco-report</module>
+        <module>clients</module>
+        <module>clients/client-athssox</module>
     </modules>
     <scm>
         <connection/>
@@ -62,6 +64,10 @@
             <dependency>
                 <groupId>${project.groupId}</groupId>
                 <artifactId>postgresql</artifactId>
+            </dependency>
+            <dependency>
+                <groupId>${project.groupId}</groupId>
+                <artifactId>client-athssox</artifactId>
             </dependency>
             <!-- DEPENDENCY -->
             <dependency>
