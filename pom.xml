@@ -40,6 +40,12 @@
     </scm>
     <properties>
         <java.version>17</java.version>
+        <lombok.version>1.18.34</lombok.version>
+        <mockito.version>5.12.0</mockito.version>
+        <junit.version>4.13.2</junit.version>
+        <mapstruct.version>1.6.2</mapstruct.version>
+        <spring-context.vesion>6.1.13</spring-context.vesion>
+        <jacoco.version>0.8.10</jacoco.version>
     </properties>
 
     <dependencyManagement>
