@@ -9,7 +9,6 @@ import com.sitionix.bffssox.usecase.CreateUser;
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
-import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 import javax.validation.Valid;
@@ -18,18 +17,18 @@ import javax.validation.Valid;
 @RequiredArgsConstructor
 public class UserController implements UserApi {
 
-//    private final UserApiMapper userApiMapper;
-//
-//    private final CreateUser createUser;
-//
-//    @Override
-//    public ResponseEntity<UserResponseDTO> createUser(@Valid UserDTO userDTO) {
-//
-//        final User user = this.userApiMapper.asUser(userDTO);
-//        final User createdUser = this.createUser.execute(user);
-//
-//        return ResponseEntity.status(HttpStatus.CREATED)
-//                .body(this.userApiMapper.asUserResponseDTO(createdUser));
-//    }
+    private final UserApiMapper userApiMapper;
+
+    private final CreateUser createUser;
+
+    @Override
+    public ResponseEntity<UserResponseDTO> createUser(@Valid UserDTO userDTO) {
+
+        final User user = this.userApiMapper.asUser(userDTO);
+        final User createdUser = this.createUser.execute(user);
+
+        return ResponseEntity.status(HttpStatus.CREATED)
+                .body(this.userApiMapper.asUserResponseDTO(createdUser));
+    }
 
 }
