@@ -20,14 +20,19 @@
         </dependency>
         <!-- DEPENDENCY -->
         <dependency>
+            <groupId>org.projectlombok</groupId>
+            <artifactId>lombok</artifactId>
+            <version>${lombok.version}</version>
+        </dependency>
+        <dependency>
             <groupId>org.mapstruct</groupId>
             <artifactId>mapstruct</artifactId>
             <version>${mapstruct.version}</version>
         </dependency>
         <dependency>
-            <groupId>org.projectlombok</groupId>
-            <artifactId>lombok</artifactId>
-            <version>${lombok.version}</version>
+            <groupId>com.afesox</groupId>
+            <artifactId>app-afesox-bffssox-client-sitionix-4-1-unstable</artifactId>
+            <version>0.0.1</version>
         </dependency>
         <dependency>
             <groupId>org.mockito</groupId>
@@ -41,6 +46,16 @@
             <version>${junit.version}</version>
             <scope>test</scope>
         </dependency>
+        <dependency>
+            <groupId>org.springframework.boot</groupId>
+            <artifactId>spring-boot-starter-test</artifactId>
+            <scope>test</scope>
+        </dependency>
     </dependencies>
-
+    <repositories>
+        <repository>
+            <id>github</id>
+            <url>https://maven.pkg.github.com/vlad-vinskevitch/app-afesox</url>
+        </repository>
+    </repositories>
 </project>
