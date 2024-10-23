@@ -33,24 +33,4 @@ public class AthssoxApiConfig {
         return  new UserApi(apiClient);
     }
 
-
-
-
-    //    @Configuration
-//    public class AthssoxApiConfig {
-//
-//        @Primary
-//        @Bean("athssoxClient")
-//        public ApiClient athssoxClient() {
-//            final ApiClient apiClient = new ApiClient();
-//            apiClient.setBasePath("localhiadskjghaflsk");
-//            return apiClient;
-//        }
-//
-//        @Bean
-//        public UserApi userApi(@Qualifier("athssoxClient") ApiClient apiClient) {
-//            return new UserApi(apiClient);
-//        }
-//
-//    }
 }
