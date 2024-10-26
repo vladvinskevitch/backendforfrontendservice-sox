@@ -22,9 +22,10 @@ public class UserController implements UserApi {
     private final CreateUser createUser;
 
     @Override
-    public ResponseEntity<UserResponseDTO> createUser(@Valid UserDTO userDTO) {
+    public ResponseEntity<UserResponseDTO> createUser(@Valid final UserDTO userDTO) {
 
         final User user = this.userApiMapper.asUser(userDTO);
+
         final User createdUser = this.createUser.execute(user);
 
         return ResponseEntity.status(HttpStatus.CREATED)

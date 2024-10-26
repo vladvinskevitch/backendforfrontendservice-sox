@@ -17,7 +17,7 @@ public class AuthClientImpl implements AuthClient {
     private final UserClientMapper userClientMapper;
 
     @Override
-    public User execute(User user) {
+    public User execute(final User user) {
 
         final UserDTO userDTO = this.userClientMapper.asUserDto(user);
 

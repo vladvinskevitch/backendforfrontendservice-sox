@@ -12,7 +12,7 @@ public class CreateUserImpl implements CreateUser {
     private final AuthClient authClient;
 
     @Override
-    public User execute(User user) {
+    public User execute(final User user) {
         return this.authClient.execute(user);
     }
 }
