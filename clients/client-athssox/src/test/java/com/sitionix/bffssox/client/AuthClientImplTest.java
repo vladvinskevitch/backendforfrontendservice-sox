@@ -19,7 +19,6 @@ import org.springframework.test.context.junit.jupiter.SpringExtension;
 import static org.assertj.core.api.Assertions.assertThat;
 import static org.mockito.Mockito.when;
 
-
 @ExtendWith(SpringExtension.class)
 @DisplayNameGeneration(DisplayNameGenerator.ReplaceUnderscores.class)
 class AuthClientImplTest {
