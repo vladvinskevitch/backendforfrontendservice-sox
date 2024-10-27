@@ -26,13 +26,8 @@ class UserClientMapperTest {
         }
     }
 
-    //    User asUser(final UserResponseDTO responseUser);
-    //
-    //    UserDTO asUserDto(final User user);
-
     @Autowired
     private UserClientMapper userClientMapper;
-
 
     @Test
     void givenUserResponseDTO_whenAsUser_thenRetunUser() {
