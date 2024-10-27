@@ -22,9 +22,9 @@ import static org.mockito.Mockito.when;
 class CreateUserImplTest {
 
     @TestConfiguration
-    static class TestContextConfiguration{
+    static class TestContextConfiguration {
         @Bean
-        public CreateUserImpl createUser(final AuthClient authClient){
+        public CreateUserImpl createUser(final AuthClient authClient) {
             return new CreateUserImpl(authClient);
         }
     }
@@ -33,10 +33,10 @@ class CreateUserImplTest {
     private CreateUserImpl createUser;
 
     @MockBean
-    private  AuthClient authClient;
+    private AuthClient authClient;
 
     @Test
-    void  givenUser_whenCreateUser_thenReturnUser(){
+    void givenUser_whenCreateUser_thenReturnCreatedUser() {
         //given
         final User given = Mockito.mock(User.class);
         final User createdUser = Mockito.mock(User.class);
