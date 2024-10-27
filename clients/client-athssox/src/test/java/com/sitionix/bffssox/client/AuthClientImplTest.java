@@ -33,7 +33,7 @@ class AuthClientImplTest {
     }
 
     @Autowired
-    private AuthClientImpl authClient;
+    private AuthClientImpl authClientImpl;
 
     @MockBean
     private UserApi userApi;
@@ -45,18 +45,22 @@ class AuthClientImplTest {
     void givenUser_whenCreateUser_thenReturnCreatedUser() {
         //given
         final User givenUser = Mockito.mock(User.class);
-        final UserDTO userDTO = Mockito.mock(UserDTO.class);
-        final UserResponseDTO createdUserDTO = Mockito.mock(UserResponseDTO.class);
+        final UserDTO givenUserDTO = Mockito.mock(UserDTO.class);
 
-        when(this.userClientMapper.asUserDto(givenUser)).thenReturn(userDTO);
-        when(this.userApi.createUser(userDTO)).thenReturn(createdUserDTO);
-        when(this.userClientMapper.asUser(createdUserDTO)).thenReturn(givenUser);
+        final UserResponseDTO createdUserDTO = Mockito.mock(UserResponseDTO.class);
+        final User createdUser = Mockito.mock(User.class);
+
+        when(this.userClientMapper.asUserDto(givenUser)).thenReturn(givenUserDTO);
+        when(this.userClientMapper.asUser(createdUserDTO)).thenReturn(createdUser);
+
+        when(this.userApi.createUser(givenUserDTO)).thenReturn(createdUserDTO);
+
 
         //when
-        final User actual = this.authClient.execute(givenUser);
+        final User actual = this.authClientImpl.execute(givenUser);
 
         //then
-        assertThat(actual).isEqualTo(givenUser);
+        assertThat(actual).isEqualTo(createdUser);
     }
 
 }
