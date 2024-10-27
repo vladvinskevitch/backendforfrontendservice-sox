@@ -1,69 +1,77 @@
 package com.sitionix.bffssox.mapper;
 
-import com.app_afesox.bffssox.api_first.dto.UserDTO;
-import com.app_afesox.bffssox.api_first.dto.UserResponseDTO;
+import com.app_afesox.bffssox.client.dto.UserDTO;
+import com.app_afesox.bffssox.client.dto.UserResponseDTO;
 import com.sitionix.bffssox.domain.User;
 import org.junit.jupiter.api.DisplayNameGeneration;
 import org.junit.jupiter.api.DisplayNameGenerator;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.extension.ExtendWith;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.boot.test.context.TestConfiguration;
 import org.springframework.context.annotation.Bean;
 import org.springframework.test.context.junit.jupiter.SpringExtension;
-import org.springframework.boot.test.context.TestConfiguration;
 
 import static org.assertj.core.api.Assertions.assertThat;
 
 @ExtendWith(SpringExtension.class)
 @DisplayNameGeneration(DisplayNameGenerator.ReplaceUnderscores.class)
-class UserApiMapperTest {
+class UserClientMapperTest {
 
     @TestConfiguration
     static class TestContextConfiguration {
         @Bean
-        public UserApiMapper userApiMapper() {
-            return new UserApiMapperImpl();
+        public UserClientMapper userClientMapper() {
+            return new UserClientMapperImpl();
         }
     }
 
+    //    User asUser(final UserResponseDTO responseUser);
+    //
+    //    UserDTO asUserDto(final User user);
+
     @Autowired
-    private UserApiMapper userApiMapper;
+    private UserClientMapper userClientMapper;
+
 
     @Test
-    void givenUserDTO_whenAsUser_thenReturnUser() {
+    void givenUserResponseDTO_whenAsUser_thenRetunUser() {
         //given
-        final UserDTO given = this.getUserDto();
+        final String givenUserPassword = null;
 
-        final User expected = this.getUser(null);
+        final UserResponseDTO given = this.getUserResponseDto();
 
+        final User expected = this.getUser(givenUserPassword);
         //when
-        final User actual = this.userApiMapper.asUser(given);
+
+        final User actual = this.userClientMapper.asUser(given);
 
         //then
         assertThat(actual).isEqualTo(expected);
     }
 
     @Test
-    void givenUser_whenAsUserResponseDTO_thenReturnUserResponseDTO() {
+    void givenUser_whenAsUserDto_thenReturnUserDTO() {
         //given
-        final Long givenUserId = 1L;
+        final String givenUserPassword = "password";
 
-        final User given = this.getUser(givenUserId);
-        final UserResponseDTO expected = this.getUserResponseDto();
+        final User given = this.getUser(givenUserPassword);
+
+        final UserDTO expected = this.getUserDto();
 
         //when
-        final UserResponseDTO actual = this.userApiMapper.asUserResponseDTO(given);
+
+        final UserDTO actual = this.userClientMapper.asUserDto(given);
 
         //then
         assertThat(actual).isEqualTo(expected);
-
     }
 
-    private User getUser(final Long id) {
+    private User getUser(final String password) {
         return User.builder()
-                .id(id)
+                .id(1L)
                 .userName("username")
-                .password("password")
+                .password(password)
                 .build();
     }
 
