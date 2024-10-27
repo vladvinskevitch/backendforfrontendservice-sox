@@ -43,6 +43,7 @@ class AuthClientImplTest {
 
     @Test
     void givenUser_whenCreateUser_thenReturnCreatedUser() {
+
         //given
         final User givenUser = Mockito.mock(User.class);
         final UserDTO givenUserDTO = Mockito.mock(UserDTO.class);
@@ -52,9 +53,7 @@ class AuthClientImplTest {
 
         when(this.userClientMapper.asUserDto(givenUser)).thenReturn(givenUserDTO);
         when(this.userClientMapper.asUser(createdUserDTO)).thenReturn(createdUser);
-
         when(this.userApi.createUser(givenUserDTO)).thenReturn(createdUserDTO);
-
 
         //when
         final User actual = this.authClientImpl.execute(givenUser);
