@@ -5,6 +5,7 @@ import com.app_afesox.bffssox.api_first.dto.UserResponseDTO;
 import com.sitionix.bffssox.domain.User;
 import com.sitionix.bffssox.mapper.UserApiMapper;
 import com.sitionix.bffssox.usecase.CreateUser;
+import org.junit.jupiter.api.AfterEach;
 import org.junit.jupiter.api.DisplayNameGeneration;
 import org.junit.jupiter.api.DisplayNameGenerator;
 import org.junit.jupiter.api.Test;
@@ -19,7 +20,7 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.test.context.junit.jupiter.SpringExtension;
 
 import static org.assertj.core.api.Assertions.assertThat;
-import static org.mockito.Mockito.when;
+import static org.mockito.Mockito.*;
 
 @ExtendWith(SpringExtension.class)
 @DisplayNameGeneration(DisplayNameGenerator.ReplaceUnderscores.class)
@@ -42,6 +43,14 @@ class UserControllerTest {
     @MockBean
     private CreateUser createUser;
 
+    @AfterEach
+    public void tearDown() {
+        verifyNoMoreInteractions(
+                this.userApiMapper,
+                this.createUser
+        );
+    }
+
     @Test
     void givenUserDTO_whenCreateUser_thenReturnUserResponseDTO() {
         //given
@@ -62,6 +71,11 @@ class UserControllerTest {
 
         //then
         assertThat(actual).isEqualTo(expectedResponse);
+
+        //verify
+        verify(this.userApiMapper, times(1)).asUser(given);
+        verify(this.userApiMapper, times(1)).asUserResponseDTO(user);
+        verify(this.createUser, times(1)).execute(user);
     }
 
 }

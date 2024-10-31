@@ -5,6 +5,7 @@ import com.app_afesox.bffssox.client.dto.UserDTO;
 import com.app_afesox.bffssox.client.dto.UserResponseDTO;
 import com.sitionix.bffssox.domain.User;
 import com.sitionix.bffssox.mapper.UserClientMapper;
+import org.junit.jupiter.api.AfterEach;
 import org.junit.jupiter.api.DisplayNameGeneration;
 import org.junit.jupiter.api.DisplayNameGenerator;
 import org.junit.jupiter.api.Test;
@@ -17,29 +18,38 @@ import org.springframework.context.annotation.Bean;
 import org.springframework.test.context.junit.jupiter.SpringExtension;
 
 import static org.assertj.core.api.Assertions.assertThat;
-import static org.mockito.Mockito.when;
+import static org.mockito.Mockito.*;
+import static org.mockito.Mockito.times;
 
 @ExtendWith(SpringExtension.class)
 @DisplayNameGeneration(DisplayNameGenerator.ReplaceUnderscores.class)
-class AuthClientImplTest {
+class UserClientImplTest {
 
     @TestConfiguration
     static class TestContextConfiguration {
         @Bean
-        public AuthClientImpl authClient(final UserApi userApi,
+        public UserClientImpl authClient(final UserApi userApi,
                                          final UserClientMapper userClientMapper) {
-            return new AuthClientImpl(userApi, userClientMapper);
+            return new UserClientImpl(userApi, userClientMapper);
         }
     }
 
     @Autowired
-    private AuthClientImpl authClientImpl;
+    private UserClientImpl authClientImpl;
 
     @MockBean
     private UserApi userApi;
 
     @MockBean
     private UserClientMapper userClientMapper;
+
+    @AfterEach
+    public void tearDown(){
+        verifyNoMoreInteractions(
+                this.userClientMapper,
+                this.userApi
+        );
+    }
 
     @Test
     void givenUser_whenCreateUser_thenReturnCreatedUser() {
@@ -60,6 +70,11 @@ class AuthClientImplTest {
 
         //then
         assertThat(actual).isEqualTo(createdUser);
+
+        //verify
+        verify(this.userClientMapper, times(1)).asUser(createdUserDTO);
+        verify(this.userClientMapper, times(1)).asUserDto(givenUser);
+        verify(this.userApi, times(1)).createUser(givenUserDTO);
     }
 
 }
