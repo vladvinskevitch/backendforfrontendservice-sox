@@ -1,7 +1,7 @@
 package com.sitionix.bffssox.usecase;
 
 
-import com.sitionix.bffssox.client.AuthClient;
+import com.sitionix.bffssox.client.UserClient;
 import com.sitionix.bffssox.domain.User;
 import org.junit.jupiter.api.DisplayNameGeneration;
 import org.junit.jupiter.api.DisplayNameGenerator;
@@ -24,16 +24,16 @@ class CreateUserImplTest {
     @TestConfiguration
     static class TestContextConfiguration {
         @Bean
-        public CreateUserImpl createUser(final AuthClient authClient) {
+        public CreateUser createUser(final UserClient authClient) {
             return new CreateUserImpl(authClient);
         }
     }
 
     @Autowired
-    private CreateUserImpl createUser;
+    private CreateUser createUser;
 
     @MockBean
-    private AuthClient authClient;
+    private UserClient userClient;
 
     @Test
     void givenUser_whenCreateUser_thenReturnCreatedUser() {
@@ -41,7 +41,7 @@ class CreateUserImplTest {
         final User given = Mockito.mock(User.class);
         final User createdUser = Mockito.mock(User.class);
 
-        when(this.authClient.execute(given)).thenReturn(createdUser);
+        when(this.userClient.createUser(given)).thenReturn(createdUser);
 
         //when
         final User actual = this.createUser.execute(given);

@@ -28,14 +28,14 @@ class UserClientImplTest {
     @TestConfiguration
     static class TestContextConfiguration {
         @Bean
-        public UserClientImpl authClient(final UserApi userApi,
+        public UserClient userClient(final UserApi userApi,
                                          final UserClientMapper userClientMapper) {
             return new UserClientImpl(userApi, userClientMapper);
         }
     }
 
     @Autowired
-    private UserClientImpl authClientImpl;
+    private UserClient userClient;
 
     @MockBean
     private UserApi userApi;
@@ -66,7 +66,7 @@ class UserClientImplTest {
         when(this.userApi.createUser(givenUserDTO)).thenReturn(createdUserDTO);
 
         //when
-        final User actual = this.authClientImpl.execute(givenUser);
+        final User actual = this.userClient.createUser(givenUser);
 
         //then
         assertThat(actual).isEqualTo(createdUser);

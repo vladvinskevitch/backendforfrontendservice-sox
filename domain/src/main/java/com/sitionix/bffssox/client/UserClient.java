@@ -2,7 +2,7 @@ package com.sitionix.bffssox.client;
 
 import com.sitionix.bffssox.domain.User;
 
-public interface AuthClient {
+public interface UserClient {
 
-    User execute(final User user);
+    User createUser(final User user);
 }

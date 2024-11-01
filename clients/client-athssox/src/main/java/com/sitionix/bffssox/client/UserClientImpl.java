@@ -10,14 +10,14 @@ import org.springframework.stereotype.Service;
 
 @Service
 @RequiredArgsConstructor
-public class UserClientImpl implements AuthClient {
+public class UserClientImpl implements UserClient {
 
     private final UserApi userApi;
 
     private final UserClientMapper userClientMapper;
 
     @Override
-    public User execute(final User user) {
+    public User createUser(final User user) {
 
         final UserDTO userDTO = this.userClientMapper.asUserDto(user);
 
