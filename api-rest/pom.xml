@@ -11,6 +11,10 @@
 
     <artifactId>api-rest</artifactId>
 
+    <properties>
+        <bffssox.api.version>0.0.1</bffssox.api.version>
+    </properties>
+
     <dependencies>
         <!-- MODULE -->
         <dependency>
@@ -42,7 +46,7 @@
         <dependency>
             <groupId>com.afesox</groupId>
             <artifactId>app-afesox-bffssox-api-first-sitionix-4-1-unstable</artifactId>
-            <version>0.0.1</version>
+            <version>${bffssox.api.version}</version>
         </dependency>
         <dependency>
             <groupId>org.mockito</groupId>

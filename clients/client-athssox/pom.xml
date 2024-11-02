@@ -11,6 +11,9 @@
     </parent>
 
     <artifactId>client-athssox</artifactId>
+    <properties>
+        <bffssox.client.version>0.0.1</bffssox.client.version>
+    </properties>
     <dependencies>
         <!-- MODULE -->
         <dependency>
@@ -32,7 +35,7 @@
         <dependency>
             <groupId>com.afesox</groupId>
             <artifactId>app-afesox-bffssox-client-sitionix-4-1-unstable</artifactId>
-            <version>${client-api.version}</version>
+            <version>${bffssox.client.version}</version>
         </dependency>
         <dependency>
             <groupId>org.mockito</groupId>
