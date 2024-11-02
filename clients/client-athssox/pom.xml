@@ -32,7 +32,7 @@
         <dependency>
             <groupId>com.afesox</groupId>
             <artifactId>app-afesox-bffssox-client-sitionix-4-1-unstable</artifactId>
-            <version>0.0.1</version>
+            <version>${client-api.version}</version>
         </dependency>
         <dependency>
             <groupId>org.mockito</groupId>

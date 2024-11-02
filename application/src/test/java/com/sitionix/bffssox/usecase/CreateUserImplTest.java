@@ -3,6 +3,7 @@ package com.sitionix.bffssox.usecase;
 
 import com.sitionix.bffssox.client.UserClient;
 import com.sitionix.bffssox.domain.User;
+import org.junit.jupiter.api.AfterEach;
 import org.junit.jupiter.api.DisplayNameGeneration;
 import org.junit.jupiter.api.DisplayNameGenerator;
 import org.junit.jupiter.api.Test;
@@ -15,7 +16,8 @@ import org.springframework.context.annotation.Bean;
 import org.springframework.test.context.junit.jupiter.SpringExtension;
 
 import static org.assertj.core.api.Assertions.assertThat;
-import static org.mockito.Mockito.when;
+import static org.mockito.Mockito.*;
+import static org.mockito.Mockito.times;
 
 @ExtendWith(SpringExtension.class)
 @DisplayNameGeneration(DisplayNameGenerator.ReplaceUnderscores.class)
@@ -35,6 +37,13 @@ class CreateUserImplTest {
     @MockBean
     private UserClient userClient;
 
+    @AfterEach
+    public void tearDown() {
+        verifyNoMoreInteractions(
+                this.userClient
+        );
+    }
+
     @Test
     void givenUser_whenCreateUser_thenReturnCreatedUser() {
         //given
@@ -48,6 +57,9 @@ class CreateUserImplTest {
 
         //then
         assertThat(actual).isEqualTo(createdUser);
+
+        //verify
+        verify(this.userClient, times(1)).createUser(given);
     }
 
 }
