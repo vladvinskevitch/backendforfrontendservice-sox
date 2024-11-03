@@ -1,8 +1,8 @@
 package com.sitionix.bffssox.client;
 
-import com.app_afesox.bffssox.client.api.UserApi;
-import com.app_afesox.bffssox.client.dto.UserDTO;
-import com.app_afesox.bffssox.client.dto.UserResponseDTO;
+import com.app_afesox.athssox.client.api.UserApi;
+import com.app_afesox.athssox.client.dto.UserDTO;
+import com.app_afesox.athssox.client.dto.UserResponseDTO;
 import com.sitionix.bffssox.domain.User;
 import com.sitionix.bffssox.mapper.UserClientMapper;
 import org.junit.jupiter.api.AfterEach;

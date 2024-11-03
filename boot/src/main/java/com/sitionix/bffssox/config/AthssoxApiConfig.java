@@ -1,7 +1,7 @@
 package com.sitionix.bffssox.config;
 
-import com.app_afesox.bffssox.client.api.UserApi;
-import com.app_afesox.bffssox.client.invoker.ApiClient;
+import com.app_afesox.athssox.client.api.UserApi;
+import com.app_afesox.athssox.client.invoker.ApiClient;
 import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.boot.context.properties.ConfigurationProperties;
 import org.springframework.context.annotation.Bean;

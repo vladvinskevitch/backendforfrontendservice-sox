@@ -1,7 +1,7 @@
 package com.sitionix.bffssox.mapper;
 
-import com.app_afesox.bffssox.client.dto.UserDTO;
-import com.app_afesox.bffssox.client.dto.UserResponseDTO;
+import com.app_afesox.athssox.client.dto.UserDTO;
+import com.app_afesox.athssox.client.dto.UserResponseDTO;
 import com.sitionix.bffssox.domain.User;
 import org.junit.jupiter.api.DisplayNameGeneration;
 import org.junit.jupiter.api.DisplayNameGenerator;
