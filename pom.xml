@@ -5,7 +5,7 @@
     <parent>
         <groupId>org.springframework.boot</groupId>
         <artifactId>spring-boot-starter-parent</artifactId>
-        <version>3.3.3</version>
+        <version>3.3.4</version>
         <relativePath/> <!-- lookup parent from repository -->
     </parent>
     <groupId>com.sitionix.bffssox</groupId>
@@ -43,7 +43,6 @@
         <mockito.version>5.12.0</mockito.version>
         <junit.version>4.13.2</junit.version>
         <mapstruct.version>1.6.2</mapstruct.version>
-        <spring-context.vesion>6.1.13</spring-context.vesion>
         <jacoco.version>0.8.10</jacoco.version>
         <validation.version>2.0.1.Final</validation.version>
     </properties>
@@ -75,11 +74,14 @@
                 <groupId>${project.groupId}</groupId>
                 <artifactId>client-athssox</artifactId>
             </dependency>
+<!--            <dependency>-->
+<!--                <groupId>org.springframework.boot</groupId>-->
+<!--                <artifactId>spring-boot-dependencies</artifactId>-->
+<!--                <version>3.3.4</version>-->
+<!--                <type>pom</type>-->
+<!--                <scope>import</scope>-->
+<!--            </dependency>-->
             <!-- DEPENDENCY -->
-            <dependency>
-                <groupId>org.springframework.boot</groupId>
-                <artifactId>spring-boot-starter-web</artifactId>
-            </dependency>
         </dependencies>
     </dependencyManagement>
 
