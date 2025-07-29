@@ -1,0 +1,8 @@
+server:
+  port: 8080
+  servlet:
+    context-path: /bffssox
+api:
+  rest:
+    athssox:
+      base-path: http://localhost:8081

@@ -9,11 +9,10 @@
         <version>0.0.1-SNAPSHOT</version>
     </parent>
 
-    <artifactId>infrastructure</artifactId>
+    <artifactId>clients</artifactId>
     <packaging>pom</packaging>
 
     <modules>
-        <module>postgresql</module>
+        <module>client-athssox</module>
     </modules>
-
 </project>
