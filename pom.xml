@@ -45,6 +45,7 @@
         <mapstruct.version>1.6.2</mapstruct.version>
         <jacoco.version>0.8.10</jacoco.version>
         <validation.version>2.0.1.Final</validation.version>
+        <spring.version>3.3.4</spring.version>
     </properties>
 
     <dependencyManagement>
@@ -74,13 +75,26 @@
                 <groupId>${project.groupId}</groupId>
                 <artifactId>client-athssox</artifactId>
             </dependency>
-<!--            <dependency>-->
-<!--                <groupId>org.springframework.boot</groupId>-->
-<!--                <artifactId>spring-boot-dependencies</artifactId>-->
-<!--                <version>3.3.4</version>-->
-<!--                <type>pom</type>-->
-<!--                <scope>import</scope>-->
-<!--            </dependency>-->
+            <dependency>
+                <groupId>org.springframework.boot</groupId>
+                <artifactId>spring-boot-starter-web</artifactId>
+                <version>3.3.4</version>
+            </dependency>
+            <dependency>
+                <groupId>org.springframework</groupId>
+                <artifactId>spring-web</artifactId>
+                <version>6.1.13</version>
+            </dependency>
+            <!-- Other dependencies as needed -->
+
+            <!-- Add other Spring dependencies if necessary -->
+            <!--            <dependency>-->
+            <!--                <groupId>org.springframework.boot</groupId>-->
+            <!--                <artifactId>spring-boot-dependencies</artifactId>-->
+            <!--                <version>3.3.4</version>-->
+            <!--                <type>pom</type>-->
+            <!--                <scope>import</scope>-->
+            <!--            </dependency>-->
             <!-- DEPENDENCY -->
         </dependencies>
     </dependencyManagement>
